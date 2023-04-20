@@ -1,5 +1,3 @@
-
-
 public class a1
 {
     public void s()
