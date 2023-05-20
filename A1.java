@@ -1,30 +1,76 @@
 import java.util.*;
 
-public class A1 {
+class Product {
+    private int id;
+    private String prname;
 
-    public static void main(String[] args) {
-        String str = "Maps are perfect to use for key-value association mapping such as dictionaries. The maps are used to perform lookups by keys or when someone wants to retrieve and update elements by keys.It is used to compute its value using the given mapping function, if the specified key is not already are associated with a value (or is mapped to null are), and enters it into this map are unlessare null.";
-        
-
-        HashMap map = new HashMap<>();
-        String[] word = str.split(" ");
-        String findword = "are";
-
-        for (String st : word) {
-            Integer integer = (Integer) map.get(st);
-            
-         
-                 if (integer == null) {
-                    map.put(st, 1);
-                } else {
-                    map.put(st, integer + 1);
-                }
-           
-
-           
+    public void SetId(int id) {
+        if (id < 100) {
+            this.id = id;
+        } else {
+            System.out.println("Please Enter proper Id");
+            throw new IllegalArgumentException();
         }
-        System.out.println(map);
-        
+    }
+
+    public void SetPrname(String prname) {
+        if (prname != null && prname.length() > 0) {
+            this.prname = prname;
+        } else {
+            System.out.println("Please Enter proper Name");
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    public int GetId() {
+        return this.id;
+    }
+
+    public String GetPrname() {
+        return this.prname;
+    }
+
+    Product(int id, String prname) {
+        SetId(id);
+        SetPrname(prname);
+    }
+}
+
+public class FilterStringPrc {
+    public static void main(String[] args) {
+        List<Product> ls = new ArrayList<>();
+
+        Product Obj = new Product(12, "Abc");
+        Product Obj1 = new Product(22, "Xyz");
+        Product Obj2 = new Product(32, "Abc2");
+        Product Obj3 = new Product(42, "Xyz2");
+        Product Obj4 = new Product(52, "Xyz4");
+        Product Obj5 = new Product(62, "Abc5");
+        Product Obj6 = new Product(72, "DFG");
+
+        ls.add(Obj);
+        ls.add(Obj);
+        ls.add(Obj1);
+        ls.add(Obj2);
+        ls.add(Obj3);
+        ls.add(Obj4);
+        ls.add(Obj5);
+        ls.add(Obj6);
+
+        // System.out.println(ls);
+        Iterator i = ls.iterator();
+        while (i.hasNext()) {
+            Product Ob = (Product) i.next();
+            int PrID = Ob.GetId();
+            String PrName = Ob.GetPrname();
+            if (PrID > 33) {
+                System.out.println("Product Id is => " + PrID + " And Product Name is => " + PrName);
+            }
+            /* if(PrName.startsWith("Ab")){
+                System.out.println("Product Id is => " + PrID + " And Product Name is => " + PrName);
+            } */
+        }
 
     }
 }
